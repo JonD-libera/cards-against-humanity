@@ -39,7 +39,7 @@ public class CardsAgainstHumanity {
     public ArrayList<BlackCard> blackCards;
     public Player czar;
     public BlackCard blackCard;
-    public String topic = Colors.BOLD + "Cards Against Humanity" + Colors.NORMAL + " | Report issues at https://github.com/soaringcats/cards-against-humanity/issues";
+    public String topic = Colors.BOLD + "Come to Fosscon! http://fosscon.org | Cards Against Humanity" + Colors.NORMAL + " | Report issues at https://github.com/JonathanD82/cards-against-humanity";
 
     public CardsAgainstHumanity() {
         this.gameStatus = GameStatus.BOT_START;

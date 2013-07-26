@@ -275,7 +275,7 @@ public class CardsAgainstHumanity {
         this.nextRound();
     }
 
-	public void listUsers(String... users) {
+	public void listUsers() {
         if (users.length < 1) {
             return;
         }

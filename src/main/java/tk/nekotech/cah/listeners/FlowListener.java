@@ -69,12 +69,13 @@ public class FlowListener extends MasterListener {
         if (quick.equals("skip") && event.getChannel().isOp(user)) {
             this.cah.nextRound();
         }
-		if (quick.equals("end")) {
-			
+		if (quick.equals("end")) {			
 				for (Player userl : this.cah.players) {
 					this.cah.processLeave(userl);
-					}
-			
+					}			
+		}
+		if (quick.equals("list")) {			
+				this.cah.listUsers();
 		}
     }
 

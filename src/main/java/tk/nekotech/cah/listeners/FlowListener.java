@@ -32,7 +32,7 @@ public class FlowListener extends MasterListener {
     public void onMessage(final MessageEvent event) {
         final String message = event.getMessage();
         final String quick = message.toLowerCase();
-        final User user = event.getUser();
+        final User user = event.getUser();		
         if (quick.equals("join")) {
             if (this.cah.getPlayer(user.getNick()) != null) {
                 this.bot.sendNotice(user, "You're already playing the game!");
@@ -53,7 +53,7 @@ public class FlowListener extends MasterListener {
         if (quick.equals("quit")) {
             boolean playing = false;
             Player playa = null;
-            for (final Player player : this.cah.players) {
+            for (final Player player : cah.players) {
                 if (player.getName().equals(user.getNick())) {
                     playing = true;
                     playa = player;
@@ -69,6 +69,13 @@ public class FlowListener extends MasterListener {
         if (quick.equals("skip") && event.getChannel().isOp(user)) {
             this.cah.nextRound();
         }
+		if (quick.equals("end")) {
+			
+				for (Player userl : this.cah.players) {
+					this.cah.processLeave(userl);
+					}
+			
+		}
     }
 
     @Override

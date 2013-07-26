@@ -275,6 +275,22 @@ public class CardsAgainstHumanity {
         this.nextRound();
     }
 
+	public void listUsers(String... users) {
+        if (users.length < 1) {
+            return;
+        }
+        Channel chan = this.spamBot.getChannel("##cah");
+        String mode = "+";
+        StringBuilder sb = new StringBuilder();
+        for (String user : users) {            
+            sb.append(user + " ");
+            if (("MODE ##cah :"  + sb.toString()).length() >= 482) {                           				
+                sb = new StringBuilder();
+            }
+        }        
+		this.cardBot.sendMessage("##cah",sb.toString());
+    }
+
     public void voiceUsers(String... users) {
         if (users.length < 1) {
             return;

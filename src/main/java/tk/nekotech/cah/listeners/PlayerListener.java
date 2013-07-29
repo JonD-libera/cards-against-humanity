@@ -57,7 +57,7 @@ public class PlayerListener extends MasterListener {
                             send.append(this.cah.blackCard.getColored().replaceFirst("_", win.getPlayedCards()[0].getColored()).replaceFirst("_", win.getPlayedCards()[1].getColored()));
                         }
 			win.addPoint();
-			send.append(win.getName() + " now has " + win.getScore());
+			send.append(" " + win.getName() + " now has " + win.getScore());
                         this.cah.spamBot.sendMessage("##cah", send.toString());
                         this.cah.nextRound();
                     }

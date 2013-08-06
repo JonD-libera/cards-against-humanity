@@ -34,6 +34,7 @@ public class CardsAgainstHumanity {
     private Timer nagger;
     public GameStatus gameStatus;
     public ArrayList<Player> players;
+	public ArrayList<Player> SpamList;
     public ArrayList<Player> playerIter;
     public List<WhiteCard> whiteCards;
     public ArrayList<BlackCard> blackCards;
@@ -133,7 +134,9 @@ public class CardsAgainstHumanity {
     public boolean inSession() {
         return this.gameStatus == GameStatus.IN_SESSION || this.gameStatus == GameStatus.CZAR_TURN;
     }
-
+	public void ourStatus() {
+		
+	}
     public void nextRound() {
         		this.nagger.cancel();
         this.nagger = new Timer();
@@ -275,17 +278,21 @@ public class CardsAgainstHumanity {
         this.nextRound();
     }
 
-	public void listUsers() {
+	public void listUsers() {	
+	Collections.copy(SpamList,players);
+	Collections.shuffle(SpamList);
 	Channel chan = this.spamBot.getChannel("##cah");
-        String mode = "+";
+        System.out.println("Hello");
+		String mode = "+";
         StringBuilder sb = new StringBuilder();
-        for (final Player player : this.players) {   
+        for (final Player player : SpamList) {
             sb.append(player + " ");
             if (("MODE ##cah :"  + sb.toString()).length() >= 482) {                           				
                 sb = new StringBuilder();
             }
         }        
 		this.cardBot.sendMessage("##cah",sb.toString());
+		
     }
 
     public void voiceUsers(String... users) {

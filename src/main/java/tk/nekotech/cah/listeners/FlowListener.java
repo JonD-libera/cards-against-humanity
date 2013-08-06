@@ -41,7 +41,8 @@ public class FlowListener extends MasterListener {
                 if (this.cah.players.size() >= maxPlayers) {
                     this.bot.sendNotice(user, "Sorry, the maximum amount of players (" + maxPlayers + ") are currently playing. Please try rejoining later.");
                 } else {
-                    this.bot.sendNotice(user, "Welcome to " + Colors.BOLD + "Cards Against Humanity" + Colors.NORMAL + "! Your cards will be assigned next round.");
+                    this.bot.voice(this.bot.getChannel("##cah"), this.bot.getUser(user.getNick()));
+					this.bot.sendNotice(user, "Welcome to " + Colors.BOLD + "Cards Against Humanity" + Colors.NORMAL + "! Your cards will be assigned next round.");
                     final Player player = new Player(user.getNick(), this.cah);
                     this.cah.players.add(player);
                     if (this.cah.inSession()) {
@@ -77,6 +78,9 @@ public class FlowListener extends MasterListener {
 		if (quick.equals("list")) {			
 				this.cah.listUsers();
 		}
+		if (quick.equals("status")) {			
+				this.cah.ourStatus();
+		}		
     }
 
     @Override
